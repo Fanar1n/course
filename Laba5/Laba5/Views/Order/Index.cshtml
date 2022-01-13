@@ -1,0 +1,70 @@
+﻿@using System.Globalization
+@model IEnumerable<Laba5.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Заказы</h1>
+
+<p>
+    <a asp-action="Add">Добавить новый</a>
+</p>
+
+<form asp-action="Download" method="get" class="form-inline ml-auto">
+    <p>Скачать чек Id:</p>
+    <div class="form-inline">
+        <select name="orderId" asp-items="ViewBag.Order"></select>
+    </div>
+    <button class="btn btn-primary" type="submit">Скачать</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderAmount)
+
+
+            </th>
+            <th>
+                <nobr>
+                    @Html.DisplayNameFor(model => model.OrderTime)
+                    @Html.ActionLink("  ↑  ", "Index", new { sortOrder = "order_desc" })
+                    @Html.ActionLink("  ↓  ", "Index", new { sortOrder = "order_asc" })
+
+                </nobr>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderAmount) бел.руб.
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.OrderTime)
+            </td>*@
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id, item }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

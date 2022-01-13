@@ -1,0 +1,77 @@
+﻿@model Laba5.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали заказа</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            Id заказа:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-3">
+            Первое блюдо:
+        </dt>
+        <dd class="col-sm-9">
+            @ViewBag.Dish1
+        </dd>
+        <dt class = "col-sm-3">
+            Второе блюдо:
+        </dt>
+        <dd class = "col-sm-9">
+            @ViewBag.Dish2
+        </dd>
+        <dt class = "col-sm-3">
+            Третье блюдо:
+        </dt>
+        <dd class = "col-sm-9">
+            @ViewBag.Dish3
+        </dd>
+        <dt class = "col-sm-3">
+            Четвёртое блюдо:
+        </dt>
+        <dd class = "col-sm-9">
+            @ViewBag.Dish4
+        </dd>
+        <dt class = "col-sm-3">
+            Столик:
+        </dt>
+        <dd class="col-sm-9">
+            @($"{Model.Table.TableDeatures}, {Model.Table.NumberOfSeats} мест")
+        </dd>
+        <dt class = "col-sm-3">
+            Фамилия клиента:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-3">
+            Время, когда был сделан заказ:
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.OrderTime)
+        </dd>
+        <dt class="col-sm-3">
+            Цена заказа:
+        </dt>
+        <dd class="col-sm-9">
+            @($"{Model.OrderAmount} бел.руб.")
+        </dd>
+        <dt class = "col-sm-3">
+            Время приготовления заказа:
+        </dt>
+        <dd class = "col-sm-9">
+            @($"{Model.LeadTime} мин.")
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Изменить", "Edit", new {  }) |
+    <a asp-action="Index">На главную страницу</a>
+</div>

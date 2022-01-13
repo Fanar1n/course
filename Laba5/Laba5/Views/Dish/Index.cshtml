@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Laba5.Models.Dish>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список блюд</h1>
+
+<p>
+    <a asp-action="Add">Добавить новое блюдо</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameDish)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDish)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id, item }) |
+                @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

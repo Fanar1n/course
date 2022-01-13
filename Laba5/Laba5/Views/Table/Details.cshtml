@@ -1,0 +1,30 @@
+﻿@model Laba5.Models.Table
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Детали столика</h1>
+
+<div>
+    <h4>Table</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberOfSeats)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfSeats)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TableDeatures)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TableDeatures)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Изменить", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Назад</a>
+</div>
